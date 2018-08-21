@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width-device-width,initial-scale=1.0,maximum-scale=1.0">
+
+    <link href="./node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+
+    <link href="assets/style.css" rel="stylesheet">
+
+</head>
+
+<title>My Todo List</title>
+
+<body>
+    <div class="container">
+    <header class="row">
+        My Todo List
+    </header>
+
+    <main class="row">
+        <!--zone de saisie du formulaire-->
+        <form name="todo" id="todo" class="col-12">
+            <div class="form-group" col="10">
+                <input type="text" name="theTodo" id="theTodo" placeholder="A faire aujourd'hui" autocomplete="off" class="form-control">
+
+                <!-- bouton de validation-->
+                <button 
+                type="button" 
+                name="ajouter" 
+                id="ajouter" 
+                class="btn bnt-success" 
+                class="form-control col-12"
+                disabled>
+                    <span class="icon-folder-upload"></span>
+                </button>
+
+
+
+            </div>
+            <div>
+                <ul class="list-unstyled list-inline"></ul>
+                <li>
+                    <button 
+                    type="button" 
+                    name="binMultipleDelete" 
+                    id="binMultipleDelete" 
+                    class="btn btn-danger"
+                    class="form-control col-10" 
+                    disabled>
+                        <span class="icon-bin2"></span>
+                    </button>
+                    </ul>
+                    <table class="table table-stripped table-condensed table-responsive">
+                        <thead>
+                            <th>
+                                &nbsp;
+                            </th>
+                            <th>
+                                A faire
+                            </th>
+                            <th>
+                                &nbsp;
+                            </th>
+                        </thead>
+                        <tbody>
+                            <!--le corps de tableau sera vide pour l'instant, l'appli se chargera d'ajouter des lignes-->
+                        </tbody>
+
+                    </table>
+            </div>
+           
+
+        </form>
+
+    </main>
+</div>
+ <!--Importation des scripts-->
+ <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+ <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+ <script src="./assets/JavaScript/todo.js"></script>
+</body>
+
+</html>
