@@ -3,6 +3,8 @@
  * 
  * Gestionnaire de la zone de saisie : theTodo
  */
+//On instancie un nouvel objet de la classe todolist
+    var todolist= new TodoList;
 
 $('#theTodo').on('keyup', function (event) {
     if ($(this).val().length >= 5) {
@@ -15,10 +17,14 @@ $('#theTodo').on('keyup', function (event) {
 
 $('#todo').on('submit', function (event) {
     event.preventDefault(); // interdire le déclenchement par défaut (CAD soumettre le formulaire)
+    var todo= new Todo(todolist); //On cree un todo avec les attribus suivants
+    todo.todo= $('#theTodo').val(); //methode set.
+    console.log('l\'objet todo contient: ' + todo.todo); //methode "get"
+    console.log('la liste contient' + todolist._todos.length)
 });
 
 
-//on vider le contenu de la saisie et désactiver le bouton, puis ajouter la ligne dans le tableau
+//on vide le contenu de la saisie et désactiver le bouton, puis ajouter la ligne dans le tableau
 $('#ajouter').on('click', function () {
 
 
@@ -83,8 +89,16 @@ $('#ajouter').on('click', function () {
 //attention l'element deletebtn n'existe pas dans le DOM a la base, il est créé par la suite
 //on va lui dire que dans "tbody" dès qu'il detecte un click on lance l'artillerie par heredité
 $('tbody').on('click', '.deleteBtn', function (event) {
+    //Recuperer la valeur du précédent <td>
+    let todoColIndex = $(this).parents('tr').index();
+    console.log('$index: '+todoColIndex);
+    let todo = todolist.get(todoColIndex);
+    todo.delete();
+    console.log('il reste :' +todolist._todos.length +' elements');
+
     //supprime la ligne
     $(this).parents('tr').remove();
+
 });
 
 ////////////////////////bOUTON DE SUPPRESSION MULTIPLE (checkbox)////////////////
@@ -126,18 +140,24 @@ $('tbody').on('click', '.deleteBtn, .multiSelect', function (event) {
 $('#binMultipleDelete').on('click',function(event){
    
     let indice=0;
+
+
     $('tbody tr').each(function(){
-        console.log('parcours les lignes');
+        console.log('je parcoure les lignes');
+        let TRindex = $(this).index();
         let firstCol=$(this).children('td').eq(0);
         let checkbox= firstCol.children('input').eq(0);
 
         if(checkbox.is(':checked')){
-            console.log('je dégage la ligne: '+indice)
+          
+            let todo = todolist.get(TRindex);
+            todo.delete();
+            console.log('il reste :' + todolist._todos.length +' elements');
+            
             $(this).remove();
+            console.log('je dégage la ligne: '+indice);
         }
         indice++;
     });
     $(this).attr('disabled','disabled');
 });
-
-
