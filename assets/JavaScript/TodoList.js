@@ -39,4 +39,6 @@ class TodoList{
     return this._todos[index]
     }
     
+    _persist()
+    _load()
 }
