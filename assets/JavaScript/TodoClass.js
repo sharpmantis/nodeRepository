@@ -26,6 +26,7 @@ class Todo{
         this._todo = value;
         //ajoute le todo a la liste des toto
         this._todoList.add(this);
+     //presistence de l'information
      
     }
 

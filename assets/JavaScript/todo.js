@@ -21,11 +21,11 @@ $('#todo').on('submit', function (event) {
     todo.todo= $('#theTodo').val(); //methode set.
     console.log('l\'objet todo contient: ' + todo.todo); //methode "get"
     console.log('la liste contient' + todolist._todos.length)
-});
+//});
 
 
 //on vide le contenu de la saisie et désactiver le bouton, puis ajouter la ligne dans le tableau
-$('#ajouter').on('click', function () {
+//$('#ajouter').on('click', function () {
 
 
     //on désactive le bouton
@@ -160,4 +160,7 @@ $('#binMultipleDelete').on('click',function(event){
         indice++;
     });
     $(this).attr('disabled','disabled');
+
+    console.log('il me reste ça: ' + todolist.toString())
+    
 });
