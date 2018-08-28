@@ -58,3 +58,10 @@
 td.strikedOut{
   text-decoration: line-through;
 }
+body {
+  background-color: #566573;
+}
+
+form {
+  background-color: #bbc5ce;
+}

@@ -3,6 +3,7 @@
  * 
  * Gestionnaire de la zone de saisie : theTodo
  */
+
 //On instancie un nouvel objet de la classe todolist
     var todolist= new TodoList;
 
@@ -52,14 +53,10 @@ $('#todo').on('submit', function (event) {
 
 
 
-
-
-
     ////////////////maintenant la colonne de contenu/////////////////////////////////////
     let contentcol = $('<td>');
     contentcol.html(content);
     contentcol.appendTo(ligne);
-
 
 
     /////////////////////Bouton de suppression de ligne///////////////////////////////////////////
@@ -93,7 +90,7 @@ $('tbody').on('click', '.deleteBtn', function (event) {
     let todoColIndex = $(this).parents('tr').index();
     console.log('$index: '+todoColIndex);
     let todo = todolist.get(todoColIndex);
-    todo.delete();
+    todolist.delete(todo);
     console.log('il reste :' +todolist._todos.length +' elements');
 
     //supprime la ligne
@@ -140,7 +137,7 @@ $('tbody').on('click', '.deleteBtn, .multiSelect', function (event) {
 $('#binMultipleDelete').on('click',function(event){
    
     let indice=0;
-
+    
 
     $('tbody tr').each(function(){
         console.log('je parcoure les lignes');
@@ -149,9 +146,10 @@ $('#binMultipleDelete').on('click',function(event){
         let checkbox= firstCol.children('input').eq(0);
 
         if(checkbox.is(':checked')){
-          
+            
             let todo = todolist.get(TRindex);
-            todo.delete();
+            console.log('notre todo ' +todo);
+            todolist.delete(todo);
             console.log('il reste :' + todolist._todos.length +' elements');
             
             $(this).remove();

@@ -5,6 +5,8 @@ class TodoList{
 //    constructor
     constructor(){
         this._todos = [] //"[]"equivalent a un new array
+        //Charger la mémoire locale
+        this._load();
     }
 
 
@@ -17,10 +19,12 @@ class TodoList{
 
     set todoList(value){
         this._todoList=value;
-        
     }
 
 //methodes
+delete(){
+    this._todoList.delete(this);
+}
 
     delete(todo){ //Methode de suppression
       
@@ -59,5 +63,76 @@ toString(){
          }
          localStorage.setItem('todos', JSON.stringify(datas));
      }
-  //  _load()
+    _load(){
+        let todos=localStorage.getItem('todos');
+        let jsontodos = JSON.parse(todos);
+
+        for(let index=0;index<jsontodos.length;index++){
+            let todo = new Todo();
+            todo._todo=jsontodos[index]
+            this._todos.push(todo);
+            
+        }
+        console.log('mes todos= '+this.toString());
+
+        //renvoyer les lignes
+        this._render()
+
+
+    }
+
+    _render(){
+       
+        for(let index=0; index<this._todos.length; index++){
+            let content = this._todos[index]._todo;
+            let ligne = $('<tr>');
+
+            ////////////////////////////Colonne de la checkbox///////////////
+            let checkboxcol = $('<td>');
+            let checkbox = $('<input>');
+            checkbox
+                .attr('type', 'checkbox')
+                .attr('checked', false)
+                .addClass('multiSelect')
+        
+            //on colle le tout
+            checkboxcol.appendTo(ligne);//ranger la colonne dans la ligne
+            checkbox.appendTo(checkboxcol);//ranger la checkbox dans la colonne
+        
+        
+        
+        
+        
+        
+            ////////////////maintenant la colonne de contenu/////////////////////////////////////
+            let contentcol = $('<td>');
+            contentcol.html(content);
+            contentcol.appendTo(ligne);
+        
+        
+        
+            /////////////////////Bouton de suppression de ligne///////////////////////////////////////////
+            //creation de la colonne
+            let deletecol = $('<td>');
+            //creation du bouton
+            let deletebutton = $('<button>');
+            deletebutton
+                .addClass('deleteBtn')
+                .addClass('btn')
+                .addClass('btn-outline-danger')
+                .attr('type', 'button');
+            //creation de l'icone
+            let deleteicon = $('<span>');
+            deleteicon.addClass('icon-bin2');
+        
+            //on colle le tout 
+        
+            ligne.appendTo($('tbody'));//j'attache ma ligne au corps du tableau
+            deletecol.appendTo(ligne);//la colonne a la ligne
+            deletebutton.appendTo(deletecol);//le bouton a la colonne
+            deleteicon.appendTo(deletebutton);//l'icone au bouton
+
+        }
+    }
+   
 }

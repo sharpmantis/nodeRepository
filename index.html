@@ -21,9 +21,9 @@
 
     <main class="row">
         <!--zone de saisie du formulaire-->
-        <form name="todo" id="todo" class="col-12">
-            <div class="form-group" col="10">
-                <input type="text" name="theTodo" id="theTodo" placeholder="A faire aujourd'hui" autocomplete="off" class="form-control">
+        <form name="todo" id="todo" class="row form-inline">
+            <div class= "form-group col-12">
+                <input type="text" name="theTodo" id="theTodo" placeholder="A faire aujourd'hui" autocomplete="off" class="form-control col-11">
 
                 <!-- bouton de validation-->
                 <button 
@@ -31,7 +31,7 @@
                 name="ajouter" 
                 id="ajouter" 
                 class="btn bnt-success" 
-                class="form-control col-12"
+                class="form-control col-1"
                 disabled>
                     <span class="icon-folder-upload"></span>
                 </button>
@@ -69,13 +69,13 @@
                         </tbody>
 
                     </table>
-            </div>
+                </div>
            
 
-        </form>
+            </form>
 
-    </main>
-</div>
+        </main>
+    </div>
 
  <!--Importation des scripts-->
  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
