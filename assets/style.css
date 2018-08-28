@@ -59,9 +59,27 @@ td.strikedOut{
   text-decoration: line-through;
 }
 body {
-  background-color: #566573;
+  background-color: #a0a5aab7;
 }
 
 form {
   background-color: #bbc5ce;
+  border-width:2px;
+  border-style:dotted;
+  border-color:black;
+  padding:12px;
+}
+
+button.btn{
+	display:inline-block;
+}
+thead{
+  
+
+}
+
+tbody tr{
+  
+  background-color: #cbd4db
+
 }

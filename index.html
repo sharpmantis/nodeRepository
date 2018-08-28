@@ -16,14 +16,14 @@
 <body>
     <div class="container">
     <header class="row">
-        My Todo List
+        <h1>My Todo List</h1>
     </header>
 
     <main class="row">
         <!--zone de saisie du formulaire-->
         <form name="todo" id="todo" class="row form-inline">
             <div class= "form-group col-12">
-                <input type="text" name="theTodo" id="theTodo" placeholder="A faire aujourd'hui" autocomplete="off" class="form-control col-11">
+                <input type="text" name="theTodo" id="theTodo" placeholder="A faire aujourd'hui" autocomplete="off" class="form-control col-10">
 
                 <!-- bouton de validation-->
                 <button 
@@ -31,7 +31,7 @@
                 name="ajouter" 
                 id="ajouter" 
                 class="btn bnt-success" 
-                class="form-control col-1"
+                class="form-control col-11"
                 disabled>
                     <span class="icon-folder-upload"></span>
                 </button>
@@ -39,9 +39,28 @@
 
 
             </div>
-            <div>
+            <div >
                 <ul class="list-unstyled list-inline"></ul>
                 <li>
+                    
+                    </ul>
+                    <table class="table table-stripped table-condensed table-responsive">
+                        <thead>
+                            <th>
+                                &nbsp;
+                            </th>
+                            <th>
+                               <h2 >A faire</h2> 
+                            </th>
+                            <th>
+                                &nbsp;
+                            </th>
+                        </thead  >
+                        <tbody   >
+                            <!--le corps de tableau sera vide pour l'instant, l'appli se chargera d'ajouter des lignes-->
+                        </tbody>
+
+                    </table>
                     <button 
                     type="button" 
                     name="binMultipleDelete" 
@@ -51,24 +70,6 @@
                     disabled>
                         <span class="icon-bin2"></span>
                     </button>
-                    </ul>
-                    <table class="table table-stripped table-condensed table-responsive">
-                        <thead>
-                            <th>
-                                &nbsp;
-                            </th>
-                            <th>
-                                A faire
-                            </th>
-                            <th>
-                                &nbsp;
-                            </th>
-                        </thead>
-                        <tbody>
-                            <!--le corps de tableau sera vide pour l'instant, l'appli se chargera d'ajouter des lignes-->
-                        </tbody>
-
-                    </table>
                 </div>
            
 

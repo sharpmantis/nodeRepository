@@ -76,7 +76,7 @@ toString(){
         console.log('mes todos= '+this.toString());
 
         //renvoyer les lignes
-        this._render()
+        this._render();
 
 
     }
