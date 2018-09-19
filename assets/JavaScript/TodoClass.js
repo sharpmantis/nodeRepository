@@ -29,5 +29,13 @@ class Todo{
      //presistence de l'information
      
     }
-
+    update(){
+        console.log('update');
+        let todoColIndex = $(this).parents('tr').index();
+        let val1 = todolist.get(todoColIndex);
+        console.log('valeur a modifier' + val1);
+        
+        var val2 =this;
+        updateVal(val1, val2);
+    }
 }

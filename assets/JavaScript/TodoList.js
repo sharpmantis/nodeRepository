@@ -77,8 +77,16 @@ toString(){
 
         //renvoyer les lignes
         this._render();
+    }
 
-
+    _update(){
+        console.log('update');
+        let todoColIndex = $(this).parents('tr').index();
+        let val1 = todolist.get(todoColIndex);
+        console.log('valeur a modifier' + val1)
+        
+        var val2 =this;
+        updateVal(val1, val2);
     }
 
     _render(){
@@ -87,51 +95,73 @@ toString(){
             let content = this._todos[index]._todo;
             let ligne = $('<tr>');
 
-            ////////////////////////////Colonne de la checkbox///////////////
-            let checkboxcol = $('<td>');
-            let checkbox = $('<input>');
-            checkbox
-                .attr('type', 'checkbox')
-                .attr('checked', false)
-                .addClass('multiSelect')
-        
-            //on colle le tout
-            checkboxcol.appendTo(ligne);//ranger la colonne dans la ligne
-            checkbox.appendTo(checkboxcol);//ranger la checkbox dans la colonne
-        
-        
-        
-        
-        
-        
-            ////////////////maintenant la colonne de contenu/////////////////////////////////////
-            let contentcol = $('<td>');
-            contentcol.html(content);
-            contentcol.appendTo(ligne);
-        
-        
-        
-            /////////////////////Bouton de suppression de ligne///////////////////////////////////////////
-            //creation de la colonne
-            let deletecol = $('<td>');
-            //creation du bouton
-            let deletebutton = $('<button>');
-            deletebutton
-                .addClass('deleteBtn')
-                .addClass('btn')
-                .addClass('btn-outline-danger')
-                .attr('type', 'button');
-            //creation de l'icone
-            let deleteicon = $('<span>');
-            deleteicon.addClass('icon-bin2');
-        
-            //on colle le tout 
-        
-            ligne.appendTo($('tbody'));//j'attache ma ligne au corps du tableau
-            deletecol.appendTo(ligne);//la colonne a la ligne
-            deletebutton.appendTo(deletecol);//le bouton a la colonne
-            deleteicon.appendTo(deletebutton);//l'icone au bouton
+           ////////////////////////////Colonne de la checkbox///////////////
+    let checkboxcol = $('<td>');
+    let checkbox = $('<input>');
+    checkbox
+        .attr('type', 'checkbox')
+        .attr('checked', false)
+        .addClass('multiSelect')
 
+    //on colle le tout
+    checkboxcol.appendTo(ligne);//ranger la colonne dans la ligne
+    checkbox.appendTo(checkboxcol);//ranger la checkbox dans la colonne
+
+
+
+    ////////////////maintenant la colonne de contenu/////////////////////////////////////
+    let contentcol = $('<td>');
+    let todoColIndex = $(this).parents('tr').index();
+    contentcol.html('<input type="text" class="modif" id="kk"   value="' + content + '">');
+    contentcol.appendTo(ligne);
+
+
+    /////////////////////Bouton de suppression de ligne///////////////////////////////////////////
+    //creation de la colonne
+    let deletecol = $('<td>');
+    //creation du bouton
+    let deletebutton = $('<button>');
+    deletebutton
+        .addClass('deleteBtn')
+        .addClass('btn')
+        .addClass('btn-outline-danger')
+        .attr('type', 'button');
+    //creation de l'icone
+    let deleteicon = $('<span>');
+    deleteicon.addClass('icon-bin2');
+
+
+    //////////////////////////Bouton de modif////////////////////////////
+
+    //creation de la colonne
+    let modifcol = $('<td>');
+    //creation du bouton
+    let modifbutton = $('<button>');
+    modifbutton
+        .addClass('modifbutton')
+        .addClass('btn')
+        .addClass('btn-outline-danger')
+        .attr('type', 'button');
+    //creation de l'icone
+    let modificon = $('<span>');
+    modificon.addClass('icon-bin2');
+
+
+    //on colle le tout 
+
+    ligne.appendTo($('tbody'));//j'attache ma ligne au corps du tableau
+    deletecol.appendTo(ligne);//la colonne a la ligne
+    modifcol.appendTo(ligne);
+    modifbutton.appendTo(modifcol)
+
+    modificon.appendTo(modifbutton);
+    deletebutton.appendTo(deletecol);//le bouton a la colonne
+    deleteicon.appendTo(deletebutton);//l'icone au bouton
+
+
+    modifbutton.appendTo(modifcol);
+    modifbutton.appendTo(modifcol);
+    modificon.appendTo(modifbutton);
         }
     }
    
